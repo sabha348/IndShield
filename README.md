@@ -221,6 +221,37 @@ flask db upgrade
 python app.py
 ```
 
+## 7. **Configuration** 🔧
+
+The application uses a `config.yaml` file for configuring detection models. This file allows you to customize:
+
+* **Model paths**: Specify locations of YOLO model files
+* **Confidence thresholds**: Set detection sensitivity for each model
+* **Class mappings**: Define class IDs for gear detection
+
+Example configuration:
+
+```yaml
+# Fire Detection
+fire_model: models/fire.pt
+fire_confidence: 0.80
+
+# Gear Detection
+gear_model: models/gear.pt
+gear_confidence: 0.85
+gear_classes:
+  helmet: 2
+  vest: 3
+  boots: 4
+
+# People Detection
+people_model: models/yolov8n.pt
+people_confidence: 0.45
+people_region: null
+```
+
+For detailed configuration options and documentation, see [CONFIG_DOCUMENTATION.md](CONFIG_DOCUMENTATION.md).
+
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 ### Connecting a Camera via IP Address
